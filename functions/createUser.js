@@ -9,5 +9,5 @@ module.exports = function createUser(req, res) {
 
   return admin.auth().createUser({ uid: phone })
     .then(user => res.send(user))
-    .catch(err => res.status(422).send({ error: err }));
+    .catch(() => res.status(422).send({ error: 'User creation error' }));
 };
