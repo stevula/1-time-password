@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const { sanitizePhone } = require('../lib/utils');
+const { sanitizePhone } = require('./lib/utils');
 
 module.exports = function createUser(req, res) {
   if (!req.body.phone) {

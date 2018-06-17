@@ -1,7 +1,7 @@
 const admin = require('firebase-admin');
-const { FROM_PHONE_NUMBER } = require('../env');
-const twilio = require('../lib/twilio');
-const { sanitizePhone } = require('../lib/utils');
+const { FROM_PHONE_NUMBER } = require('./env');
+const twilio = require('./lib/twilio');
+const { sanitizePhone } = require('./lib/utils');
 
 module.exports = function requestOneTimePassword(req, res) {
   if (!req.body.phone) {
