@@ -1,4 +1,3 @@
-serviceAccountKey.json
 /.vscode
 node_modules
 /coverage
@@ -11,3 +10,6 @@ package-lock.json
 .DS_Store
 .idea
 *.iml
+
+serviceAccountKey.json
+env*
