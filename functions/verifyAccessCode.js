@@ -23,8 +23,9 @@ module.exports = function verifyPassword(req, res) {
         ref.update({ codeValid: false });
 
         return admin.auth().createCustomToken(phone)
+          .then(token => res.send({ token }))
+          .catch(() => res.send({ error: 'Failed to create auth token'}))
       });
     })
-    .then((token) => res.send({ token }))
     .catch(() => res.status(422).send({ error: 'Authentication failed'}));
 };
