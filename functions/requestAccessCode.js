@@ -3,7 +3,7 @@ const { FROM_PHONE_NUMBER } = require('./env');
 const twilio = require('./lib/twilio');
 const { sanitizePhone } = require('./lib/utils');
 
-module.exports = function requestOneTimePassword(req, res) {
+module.exports = function requestAccessCode(req, res) {
   if (!req.body.phone) {
     return res.status(422).send({ error: 'Missing phone number' });
   }
