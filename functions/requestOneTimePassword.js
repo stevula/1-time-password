@@ -1,13 +1,14 @@
 const admin = require('firebase-admin');
-const twilio = require('./twilio');
-const { FROM_PHONE_NUMBER } = require('./env');
+const { FROM_PHONE_NUMBER } = require('../env');
+const twilio = require('../lib/twilio');
+const { sanitizePhone } = require('../lib/utils');
 
 module.exports = function requestOneTimePassword(req, res) {
   if (!req.body.phone) {
     return res.status(422).send({ error: 'Missing phone number' });
   }
 
-  const phone = String(req.body.phone).replace(/\D/g, '');
+  const phone = sanitizePhone(req.body.phone);
 
   return admin.auth().getUser(phone)
     .then((user) => {
