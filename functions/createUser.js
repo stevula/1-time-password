@@ -6,6 +6,8 @@ module.exports = function createUser(req, res) {
     return res.status(422).send({ error: 'Missing phone number' });
   }
 
+  const phone = sanitizePhone(req.body.phone);
+
   return admin.auth().createUser({ uid: sanitizePhone(phone) })
     .then(user => res.send(user))
     .catch(() => res.status(422).send({ error: 'User creation error' }));
